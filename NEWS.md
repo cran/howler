@@ -1,5 +1,10 @@
 # howler
 
+## 0.2.1
+
+- Fixed issue where adding tracks with names failed (#12)
+- Included server side toggle play/pause (#13 - thanks @antoine-sachet) 
+
 ## 0.2.0
 
 - Converted from single JS script to `{htmlwidgets}` widget

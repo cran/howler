@@ -1,7 +1,7 @@
 Package: howler
 Type: Package
 Title: 'Shiny' Extension of 'howler.js'
-Version: 0.2.0
+Version: 0.2.1
 Authors@R: c(
     person("Ashley", "Baldry", email = "arbaldry91@gmail.com", role = c("aut", "cre")),
     person("James", "Simpson", role = "aut", comment = "Creator of howler.js")
@@ -17,12 +17,12 @@ Encoding: UTF-8
 Imports: shiny, htmlwidgets
 Suggests: rmarkdown, knitr, shinytest2, globals, testthat (>= 3.0.0)
 Language: en-GB
-RoxygenNote: 7.2.0
+RoxygenNote: 7.2.1
 VignetteBuilder: knitr
 NeedsCompilation: no
-Packaged: 2022-07-21 17:06:04 UTC; arbal
+Packaged: 2022-10-06 18:18:03 UTC; arbal
 Author: Ashley Baldry [aut, cre],
   James Simpson [aut] (Creator of howler.js)
 Maintainer: Ashley Baldry <arbaldry91@gmail.com>
 Repository: CRAN
-Date/Publication: 2022-07-21 17:50:05 UTC
+Date/Publication: 2022-10-06 18:30:02 UTC
