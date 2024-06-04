@@ -54,8 +54,8 @@ addTrack <- function(id, track, play_track = FALSE, session = getDefaultReactive
   if (is.null(names(track))) {
     track_name <- vapply(
       track,
-      function(x) sub("\\.[^\\.]+$", "", basename(x[1])),
-      character(1),
+      function(x) sub("\\.[^\\.]+$", "", basename(x[1L])),
+      character(1L),
       USE.NAMES = FALSE
     )
   } else {
@@ -69,6 +69,22 @@ addTrack <- function(id, track, play_track = FALSE, session = getDefaultReactive
     play = play_track
   )
   session$sendCustomMessage(message_name, track_info)
+}
+
+#' @details
+#' For `deleteTrack`, make sure that the name is used of the track
+#' rather than the file name.
+#'
+#' @rdname howlerServer
+#' @export
+deleteTrack <- function(id, track, session = getDefaultReactiveDomain()) {
+  tracks <- session$input[[paste0(session$ns(id), "_tracks")]]
+  if (!track %in% tracks) {
+    warning(track, " not available for ", id, call. = FALSE)
+    return(invisible())
+  }
+
+  session$sendCustomMessage(paste0("deleteHowlerTrack_", session$ns(id)), track)
 }
 
 #' @rdname howlerServer
@@ -105,4 +121,12 @@ stopHowl <- function(id, session = getDefaultReactiveDomain()) {
 seekHowl <- function(id, seek, session = getDefaultReactiveDomain()) {
   message_name <- paste0("seekHowler_", session$ns(id))
   session$sendCustomMessage(message_name, as.numeric(seek))
+}
+
+#' @param rate Rate (from 0.5 to 4.0) of the audio playback speed
+#' @rdname howlerServer
+#' @export
+changeHowlSpeed <- function(id, rate = 1.0, session = getDefaultReactiveDomain()) {
+  message_name <- paste0("changeHowlerRate_", session$ns(id))
+  session$sendCustomMessage(message_name, as.numeric(rate))
 }

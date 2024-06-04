@@ -4,16 +4,20 @@
 \alias{howlerServer}
 \alias{changeTrack}
 \alias{addTrack}
+\alias{deleteTrack}
 \alias{playHowl}
 \alias{pauseHowl}
 \alias{togglePlayHowl}
 \alias{stopHowl}
 \alias{seekHowl}
+\alias{changeHowlSpeed}
 \title{Update howler.js Server-Side}
 \usage{
 changeTrack(id, track, session = getDefaultReactiveDomain())
 
 addTrack(id, track, play_track = FALSE, session = getDefaultReactiveDomain())
+
+deleteTrack(id, track, session = getDefaultReactiveDomain())
 
 playHowl(id, session = getDefaultReactiveDomain())
 
@@ -24,6 +28,8 @@ togglePlayHowl(id, session = getDefaultReactiveDomain())
 stopHowl(id, session = getDefaultReactiveDomain())
 
 seekHowl(id, seek, session = getDefaultReactiveDomain())
+
+changeHowlSpeed(id, rate = 1, session = getDefaultReactiveDomain())
 }
 \arguments{
 \item{id}{ID of the \code{howler} to update}
@@ -36,6 +42,8 @@ If the file is not included in the player nothing will happen.}
 \item{play_track}{Logical, should the new track be played on addition?}
 
 \item{seek}{Time (in seconds) to set the position of the track}
+
+\item{rate}{Rate (from 0.5 to 4.0) of the audio playback speed}
 }
 \value{
 Updates the the state of the specified \code{howler} in the shiny application.
@@ -49,6 +57,10 @@ will all be applied to the current track.
 \code{changeTrack} will update the track to the file specified.
 
 \code{addTrack} will add a new track to the specified player.
+}
+\details{
+For `deleteTrack`, make sure that the name is used of the track
+rather than the file name.
 }
 \examples{
 if (interactive()) {
